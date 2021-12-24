@@ -9,9 +9,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @ToString
 @Component
-public class Account {
-    private Integer id;
-    private String username;
-    private String password;
-    private String email;
+public class Family {
+    private String familyID;
+    private String householderID;
+    private Integer address;
 }

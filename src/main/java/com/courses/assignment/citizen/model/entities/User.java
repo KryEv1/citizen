@@ -1,8 +1,8 @@
 package com.courses.assignment.citizen.model.entities;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
 import java.sql.*;
 
 @Getter
@@ -10,23 +10,11 @@ import java.sql.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Entity
-@Table(name = "user")
+@Component
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userID", nullable = false)
     private Integer id;
-
-    @Column(name = "name", length = 200)
     private String name;
-
-    @Column(name = "birth")
     private Date birth;
-
-    @Column(name = "phone", length = 45)
     private String phone;
-
-    @Column(name = "accountID")
     private int accountID;
 }
