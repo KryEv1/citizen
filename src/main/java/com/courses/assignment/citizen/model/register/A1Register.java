@@ -1,4 +1,4 @@
-package com.courses.assignment.citizen.model.entities;
+package com.courses.assignment.citizen.model.register;
 
 import lombok.*;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @ToString
 @Component
-public class A1User extends User {
-    private String userStatus;
+public class A1Register extends UserRegister {
     private Integer totalProvinces;
 }

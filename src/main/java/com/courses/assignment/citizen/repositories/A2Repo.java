@@ -1,4 +1,4 @@
-package com.courses.assignment.citizen.model.repositories;
+package com.courses.assignment.citizen.repositories;
 
 import com.courses.assignment.citizen.model.entities.A1User;
 import org.springframework.stereotype.Repository;
