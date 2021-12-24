@@ -21,17 +21,17 @@ public class A3Controller {
     private ModelMapper modelMapper;
 
     @Autowired
-    private A3Repo repo;
+    private A3Repo a3Repo;
 
     @GetMapping("")
     public ResponseEntity<?> getAllA3() {
-        List<A3UserDto> a3Users = repo.getAll().stream().map(a3User -> modelMapper.map(a3User, A3UserDto.class)).collect(Collectors.toList());
+        List<A3UserDto> a3Users = a3Repo.getAll().stream().map(a3User -> modelMapper.map(a3User, A3UserDto.class)).collect(Collectors.toList());
         return ResponseEntity.ok(a3Users);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getA3ByID(int id) {
-        return ResponseEntity.ok(modelMapper.map(repo.getById(id), A3UserDto.class));
+        return ResponseEntity.ok(modelMapper.map(a3Repo.getById(id), A3UserDto.class));
     }
 
 }

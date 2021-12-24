@@ -1,8 +1,9 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.repositories.impl;
 
 import com.courses.assignment.citizen.model.database.DbConnection;
 import com.courses.assignment.citizen.model.entities.Account;
 import com.courses.assignment.citizen.model.register.UserRegister;
+import com.courses.assignment.citizen.repositories.AccountRepo;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;

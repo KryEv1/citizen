@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public interface A1Service {
-    public List<A1UserDto> getAll();
-    public A1UserDto getById(int id);
-    public void createUser(A1Register register);
-    public void updateUser(A1User a1User);
-    public void deleteUser(int id);
+    List<A1UserDto> getAll();
+    A1UserDto getById(int id);
+    void createUser(A1Register register);
+    void updateUser(A1User a1User);
+    void deleteUser(int id);
 }

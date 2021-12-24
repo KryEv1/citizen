@@ -8,13 +8,13 @@ import java.util.List;
 
 @Repository
 public interface AccountRepo {
-    public List<Account> getAll();
-    public Account getById(int id);
-    public Account getByEmail(String email);
-    public void createAccount(UserRegister register);
-    public void deleteAccount(int id);
-    public void updatePassword(String password, int id);
-    public void updateEmail(String email, int id);
-    public boolean checkEmail(String email);
-    public boolean checkUsername(String username);
+    List<Account> getAll();
+    Account getById(int id);
+    Account getByEmail(String email);
+    void createAccount(UserRegister register);
+    void deleteAccount(int id);
+    void updatePassword(String password, int id);
+    void updateEmail(String email, int id);
+    boolean checkEmail(String email);
+    boolean checkUsername(String username);
 }

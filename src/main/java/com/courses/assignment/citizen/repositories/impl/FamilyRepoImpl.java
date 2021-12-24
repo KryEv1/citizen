@@ -1,6 +1,7 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.repositories.impl;
 
 import com.courses.assignment.citizen.model.entities.Family;
+import com.courses.assignment.citizen.repositories.FamilyRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

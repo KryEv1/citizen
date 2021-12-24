@@ -1,9 +1,9 @@
 package com.courses.assignment.citizen.controller;
 
-import com.courses.assignment.citizen.model.dto.A1UserDto;
 import com.courses.assignment.citizen.model.register.A1Register;
+import com.courses.assignment.citizen.model.register.A2Register;
 import com.courses.assignment.citizen.services.A1Service;
-import org.modelmapper.ModelMapper;
+import com.courses.assignment.citizen.services.A2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class A1Controller {
 
     @Autowired
-    private ModelMapper modelMapper;
+    private A1Service a1Service;
 
     @Autowired
-    private A1Service a1Service;
+    private A2Service a2Service;
 
     @GetMapping("")
     public ResponseEntity<?> getAllA1() {
@@ -25,8 +25,8 @@ public class A1Controller {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getA1ByID(int id) {
-        return ResponseEntity.ok(modelMapper.map(a1Service.getById(id), A1UserDto.class));
+    public ResponseEntity<?> getA1ByID(@PathVariable int id) {
+        return ResponseEntity.ok(a1Service.getById(id));
     }
 
     @PostMapping("/register")
@@ -34,5 +34,4 @@ public class A1Controller {
         a1Service.createUser(register);
         return ResponseEntity.ok("Tạo người dùng thành công");
     }
-
 }

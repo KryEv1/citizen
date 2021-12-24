@@ -1,9 +1,10 @@
-package com.courses.assignment.citizen.services;
+package com.courses.assignment.citizen.services.impl;
 
 import com.courses.assignment.citizen.model.dto.A1UserDto;
 import com.courses.assignment.citizen.model.entities.A1User;
 import com.courses.assignment.citizen.model.register.A1Register;
 import com.courses.assignment.citizen.repositories.A1Repo;
+import com.courses.assignment.citizen.services.A1Service;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,7 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.repositories.impl;
 
 import com.courses.assignment.citizen.model.entities.Province;
+import com.courses.assignment.citizen.repositories.ProvinceRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

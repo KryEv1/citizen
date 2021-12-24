@@ -1,9 +1,12 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.repositories.impl;
 
 import com.courses.assignment.citizen.model.database.DbConnection;
 import com.courses.assignment.citizen.model.entities.A1User;
 import com.courses.assignment.citizen.model.entities.User;
 import com.courses.assignment.citizen.model.register.A1Register;
+import com.courses.assignment.citizen.repositories.A1Repo;
+import com.courses.assignment.citizen.repositories.AccountRepo;
+import com.courses.assignment.citizen.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

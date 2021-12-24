@@ -1,15 +1,16 @@
 package com.courses.assignment.citizen.repositories;
 
-import com.courses.assignment.citizen.model.entities.A1User;
+import com.courses.assignment.citizen.model.entities.A3User;
+import com.courses.assignment.citizen.model.register.A3Register;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public interface A3Repo {
-    public List<A1User> getAll();
-    public A1User getById(int id);
-    public void createUser(A1User a1User);
-    public void updateUser(A1User a1User);
-    public void deleteUser(int id);
+    List<A3User> getAll();
+    A3User getById(int id);
+    void createUser(A3Register register);
+    void updateUser(A3User a3User);
+    void deleteUser(int id);
 }
