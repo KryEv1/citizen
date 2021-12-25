@@ -1,12 +1,12 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.services;
 
 import com.courses.assignment.citizen.model.entities.Commune;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
-public interface CommuneRepo {
+@Service
+public interface CommuneService {
     List<Commune> getAllInProvince(int provinceID);
     List<Commune> getAllInDistrict(int districtID);
     Commune getById(int id);

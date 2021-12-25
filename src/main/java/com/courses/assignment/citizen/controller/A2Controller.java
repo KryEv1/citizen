@@ -14,19 +14,25 @@ public class A2Controller {
     @Autowired
     private A2Service a2Service;
 
-    @GetMapping("")
+    @GetMapping("") // localhost:8080/A2Users
     public ResponseEntity<?> getAllA2() {
         return ResponseEntity.ok(a2Service.getAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // localhost:8080/A2Users/{id}
     public ResponseEntity<?> getA2ByID(@PathVariable int id) {
         return ResponseEntity.ok(a2Service.getById(id));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register") // localhost:8080/A2Users/register --- include json in body
     public ResponseEntity<?> createA2(@RequestBody A2Register register) {
         a2Service.createUser(register);
         return ResponseEntity.ok("Tạo người dùng thành công");
+    }
+
+    @PostMapping("/deleteUser") // localhost:8080/A2Users/deleteUser?id={id}
+    public ResponseEntity<?> deleteA2(@RequestParam int id) {
+        a2Service.deleteUser(id);
+        return ResponseEntity.ok("Xóa người dùng thành công");
     }
 }

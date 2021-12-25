@@ -7,12 +7,12 @@ import java.util.List;
 
 @Repository
 public interface CitizenRepo {
-    public List<Citizen> getAllByProvince(int provinceID);
-    public List<Citizen> getAllByDistrict(int districtID);
-    public List<Citizen> getAllByCommune(int communeID);
-    public List<Citizen> getAllByHamlet(int hamletID);
-    public List<Citizen> getAllInFamily(int familyID);
-    public Citizen findByID(int id);
-    public void updateInfo(Citizen citizen);
-    public void delete(int id);
+    List<Citizen> getAllByProvince(int provinceID);
+    List<Citizen> getAllByDistrict(int districtID);
+    List<Citizen> getAllByCommune(int communeID);
+    List<Citizen> getAllByHamlet(int hamletID);
+    List<Citizen> getAllInFamily(int familyID);
+    Citizen findByID(int id);
+    void updateInfo(Citizen citizen);
+    void delete(int id);
 }

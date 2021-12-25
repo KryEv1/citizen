@@ -3,7 +3,6 @@ package com.courses.assignment.citizen.model.entities;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
 import java.sql.Date;
 
 
@@ -20,7 +19,9 @@ public class Citizen {
     private String sex;
     private String nationality;
     private Integer address;
+    private String fullAddress;
     private String householderID;
+    private Citizen householder;
     private String relationship;
     private String familyID;
 }

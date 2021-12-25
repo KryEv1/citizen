@@ -1,15 +1,16 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.services;
 
+import com.courses.assignment.citizen.model.dto.B1UserDto;
 import com.courses.assignment.citizen.model.entities.B1User;
 import com.courses.assignment.citizen.model.register.B1Register;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
-public interface B1Repo {
-    List<B1User> getAll();
-    B1User getById(int id);
+@Service
+public interface B1Service {
+    List<B1UserDto> getAll();
+    B1UserDto getById(int id);
     void createUser(B1Register register);
     void updateUser(B1User b1User);
     void deleteUser(int id);

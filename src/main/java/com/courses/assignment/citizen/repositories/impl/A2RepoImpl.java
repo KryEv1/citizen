@@ -132,7 +132,8 @@ public class A2RepoImpl implements A2Repo {
         Connection conn = connection.getConnection();
 
         try {
-            String query = "select * from citizen_db.a2_user where userID = ?";
+            String query = "select * from citizen_db.a2_user a2 inner join citizen_db.user u on a2.userID = u.userID " +
+                    "where userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet a2User = statement.executeQuery();

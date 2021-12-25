@@ -130,7 +130,8 @@ public class A1RepoImpl implements A1Repo {
         Connection conn = connection.getConnection();
 
         try {
-            String query = "select * from citizen_db.a1_user where userID = ?";
+            String query = "select * from citizen_db.a1_user a1 inner join citizen_db.user u on a1.userID = u.userID " +
+                    "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet a1User = statement.executeQuery();

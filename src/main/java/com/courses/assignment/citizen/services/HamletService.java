@@ -1,12 +1,12 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.services;
 
 import com.courses.assignment.citizen.model.entities.Hamlet;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
-public interface HamletRepo {
+@Service
+public interface HamletService {
     List<Hamlet> getAllInProvince(int provinceID);
     List<Hamlet> getAllInDistrict(int districtID);
     List<Hamlet> getAllInCommune(int communeID);

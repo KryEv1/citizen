@@ -19,17 +19,17 @@ public class A1Controller {
     @Autowired
     private A2Service a2Service;
 
-    @GetMapping("")
+    @GetMapping("") // localhost:8080/A1Users
     public ResponseEntity<?> getAllA1() {
         return ResponseEntity.ok(a1Service.getAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // localhost:8080/A1Users/{id}
     public ResponseEntity<?> getA1ByID(@PathVariable int id) {
         return ResponseEntity.ok(a1Service.getById(id));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register") // localhost:8080/A1User/register --- include json in body
     public ResponseEntity<?> createUser(@RequestBody A1Register register) {
         a1Service.createUser(register);
         return ResponseEntity.ok("Tạo người dùng thành công");

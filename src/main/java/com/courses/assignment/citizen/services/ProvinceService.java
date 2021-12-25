@@ -1,12 +1,12 @@
-package com.courses.assignment.citizen.repositories;
+package com.courses.assignment.citizen.services;
 
 import com.courses.assignment.citizen.model.entities.Province;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
-public interface ProvinceRepo {
+@Service
+public interface ProvinceService {
     List<Province> getAll();
     Province getById(int id);
     void add(Province province);
