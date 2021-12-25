@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public interface A2Service {
     List<A2UserDto> getAll();
-    A2UserDto getById(int id);
+    A2UserDto getById(String id);
     void createUser(A2Register register);
     void updateUser(A2User a2User);
-    void deleteUser(int id);
+    void deleteUser(String id);
 }

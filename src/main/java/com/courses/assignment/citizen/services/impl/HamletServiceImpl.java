@@ -14,22 +14,22 @@ public class HamletServiceImpl implements HamletService {
     private HamletRepo hamletRepo;
 
     @Override
-    public List<Hamlet> getAllInProvince(int provinceID) {
+    public List<Hamlet> getAllInProvince(String provinceID) {
         return hamletRepo.getAllInProvince(provinceID);
     }
 
     @Override
-    public List<Hamlet> getAllInDistrict(int districtID) {
+    public List<Hamlet> getAllInDistrict(String districtID) {
         return hamletRepo.getAllInDistrict(districtID);
     }
 
     @Override
-    public List<Hamlet> getAllInCommune(int communeID) {
+    public List<Hamlet> getAllInCommune(String communeID) {
         return hamletRepo.getAllInCommune(communeID);
     }
 
     @Override
-    public Hamlet getByID(int id) {
+    public Hamlet getByID(String id) {
         return hamletRepo.getByID(id);
     }
 
@@ -44,7 +44,7 @@ public class HamletServiceImpl implements HamletService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         hamletRepo.delete(id);
     }
 }

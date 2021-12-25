@@ -16,7 +16,7 @@ public class CommuneRepoImpl implements CommuneRepo {
     DbConnection connection = DbConnection.getInstance();
 
     @Override
-    public List<Commune> getAllInProvince(int provinceID) {
+    public List<Commune> getAllInProvince(String provinceID) {
         Connection conn = connection.getConnection();
         List<Commune> communes = new ArrayList<>();
         try {
@@ -24,15 +24,15 @@ public class CommuneRepoImpl implements CommuneRepo {
                     "inner join citizen_db.district d on c.districtID = d.districtID " +
                     "where provinceID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, provinceID);
+            statement.setString(1, provinceID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Commune commune = new Commune();
-                commune.setId(result.getInt("communeID"));
+                commune.setId(result.getString("communeID"));
                 commune.setCommuneName(result.getString("commune_name"));
                 commune.setPopulation(result.getInt("population"));
                 commune.setTotalHamlets(result.getInt("totalHamlets"));
-                commune.setDistrictID(result.getInt("districtID"));
+                commune.setDistrictID(result.getString("districtID"));
 
                 communes.add(commune);
             }
@@ -44,21 +44,21 @@ public class CommuneRepoImpl implements CommuneRepo {
     }
 
     @Override
-    public List<Commune> getAllInDistrict(int districtID) {
+    public List<Commune> getAllInDistrict(String districtID) {
         Connection conn = connection.getConnection();
         List<Commune> communes = new ArrayList<>();
         try {
             String query = "select * from citizen_db.commune where districtID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, districtID);
+            statement.setString(1, districtID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Commune commune = new Commune();
-                commune.setId(result.getInt("communeID"));
+                commune.setId(result.getString("communeID"));
                 commune.setCommuneName(result.getString("commune_name"));
                 commune.setPopulation(result.getInt("population"));
                 commune.setTotalHamlets(result.getInt("totalHamlets"));
-                commune.setDistrictID(result.getInt("districtID"));
+                commune.setDistrictID(result.getString("districtID"));
 
                 communes.add(commune);
             }
@@ -70,21 +70,21 @@ public class CommuneRepoImpl implements CommuneRepo {
     }
 
     @Override
-    public Commune getById(int id) {
+    public Commune getById(String id) {
         Connection conn = connection.getConnection();
         Commune commune = null;
         try {
             String query = "select * from citizen_db.commune where communeID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 commune = new Commune();
-                commune.setId(result.getInt("communeID"));
+                commune.setId(result.getString("communeID"));
                 commune.setCommuneName(result.getString("commune_name"));
                 commune.setPopulation(result.getInt("population"));
                 commune.setTotalHamlets(result.getInt("totalHamlets"));
-                commune.setDistrictID(result.getInt("districtID"));
+                commune.setDistrictID(result.getString("districtID"));
             }
             conn.close();
         } catch (Exception e) {
@@ -99,11 +99,11 @@ public class CommuneRepoImpl implements CommuneRepo {
         try {
             String query = "insert into citizen_db.commune values(?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, commune.getId());
+            statement.setString(1, commune.getId());
             statement.setString(2, commune.getCommuneName());
             statement.setInt(3, commune.getPopulation());
             statement.setInt(4, commune.getTotalHamlets());
-            statement.setInt(5, commune.getDistrictID());
+            statement.setString(5, commune.getDistrictID());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -125,8 +125,8 @@ public class CommuneRepoImpl implements CommuneRepo {
             statement.setString(1, commune.getCommuneName());
             statement.setInt(2, commune.getPopulation());
             statement.setInt(3, commune.getTotalHamlets());
-            statement.setInt(4, commune.getDistrictID());
-            statement.setInt(5, commune.getId());
+            statement.setString(4, commune.getDistrictID());
+            statement.setString(5, commune.getId());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -135,12 +135,12 @@ public class CommuneRepoImpl implements CommuneRepo {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         Connection conn = connection.getConnection();
         try {
             String query = "delete from citizen_db.commune where communeID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.execute();
             conn.close();
         } catch (Exception e) {

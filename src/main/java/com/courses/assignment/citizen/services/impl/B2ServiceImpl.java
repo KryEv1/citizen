@@ -26,7 +26,7 @@ public class B2ServiceImpl implements B2Service {
     }
 
     @Override
-    public B2UserDto getById(int id) {
+    public B2UserDto getById(String id) {
         return modelMapper.map(b2Repo.getById(id), B2UserDto.class);
     }
 
@@ -41,7 +41,7 @@ public class B2ServiceImpl implements B2Service {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         b2Repo.deleteUser(id);
     }
 }

@@ -12,7 +12,7 @@ import java.sql.Date;
 @ToString
 @Data
 public class A1UserDto implements Serializable {
-    private Integer userID;
+    private String userID;
     private String name;
     private Date birth;
     private String phone;

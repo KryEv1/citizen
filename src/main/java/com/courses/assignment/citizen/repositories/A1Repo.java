@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface A1Repo {
-    public List<A1User> getAll();
-    public A1User getById(int id);
-    public void createUser(A1Register register);
-    public void updateUser(A1User a1User);
-    public void deleteUser(int id);
+    List<A1User> getAll();
+    A1User getById(String id);
+    void createUser(A1Register register);
+    void updateUser(A1User a1User);
+    void deleteUser(String id);
 }

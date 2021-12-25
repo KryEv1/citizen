@@ -10,5 +10,5 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class B1Register extends UserRegister {
-    private int communeID;
+    private String communeID;
 }

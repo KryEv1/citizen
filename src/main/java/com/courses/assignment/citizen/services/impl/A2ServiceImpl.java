@@ -27,7 +27,7 @@ public class A2ServiceImpl implements A2Service {
     }
 
     @Override
-    public A2UserDto getById(int id) {
+    public A2UserDto getById(String id) {
         return modelMapper.map(a2Repo.getById(id), A2UserDto.class);
     }
 
@@ -42,7 +42,7 @@ public class A2ServiceImpl implements A2Service {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         a2Repo.deleteUser(id);
     }
 }

@@ -25,7 +25,7 @@ public class ProvinceRepoImpl implements ProvinceRepo {
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Province province = new Province();
-                province.setId(result.getInt("provinceID"));
+                province.setId(result.getString("provinceID"));
                 province.setProvinceName(result.getString("province_name"));
                 province.setPopulation(result.getInt("population"));
                 province.setTotalDistricts(result.getInt("totalDistricts"));
@@ -40,17 +40,17 @@ public class ProvinceRepoImpl implements ProvinceRepo {
     }
 
     @Override
-    public Province getById(int id) {
+    public Province getById(String id) {
         Connection conn = connection.getConnection();
         Province province = null;
         try {
             String query = "select * from citizen_db.province where provinceID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 province = new Province();
-                province.setId(result.getInt("provinceID"));
+                province.setId(result.getString("provinceID"));
                 province.setProvinceName(result.getString("province_name"));
                 province.setPopulation(result.getInt("population"));
                 province.setTotalDistricts(result.getInt("totalDistricts"));
@@ -68,7 +68,7 @@ public class ProvinceRepoImpl implements ProvinceRepo {
         try {
             String query = "insert into citizen_db.province values(?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, province.getId());
+            statement.setString(1, province.getId());
             statement.setString(2, province.getProvinceName());
             statement.setInt(3, province.getPopulation());
             statement.setInt(4, province.getTotalDistricts());
@@ -97,12 +97,12 @@ public class ProvinceRepoImpl implements ProvinceRepo {
     }
 
     @Override
-    public void delete(int provinceID) {
+    public void delete(String provinceID) {
         Connection conn = connection.getConnection();
         try {
             String query = "delete from citizen_db.province where provinceID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, provinceID);
+            statement.setString(1, provinceID);
             statement.execute();
             conn.close();
         } catch (Exception e) {

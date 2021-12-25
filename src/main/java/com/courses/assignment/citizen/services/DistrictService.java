@@ -7,9 +7,9 @@ import java.util.List;
 
 @Service
 public interface DistrictService {
-    List<District> getAllInProvince(int provinceID);
-    District getById(int id);
+    List<District> getAllInProvince(String provinceID);
+    District getById(String id);
     void add(District district);
     void update(District district);
-    void delete(int id);
+    void delete(String id);
 }

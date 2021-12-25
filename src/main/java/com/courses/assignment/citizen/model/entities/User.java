@@ -12,7 +12,7 @@ import java.sql.*;
 @ToString
 @Component
 public class User {
-    private Integer id;
+    private String id;
     private String name;
     private Date birth;
     private String phone;

@@ -27,7 +27,7 @@ public class A1ServiceImpl implements A1Service {
     }
 
     @Override
-    public A1UserDto getById(int id) {
+    public A1UserDto getById(String id) {
         return modelMapper.map(a1Repo.getById(id), A1UserDto.class);
     }
 
@@ -42,7 +42,7 @@ public class A1ServiceImpl implements A1Service {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         a1Repo.deleteUser(id);
     }
 }

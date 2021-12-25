@@ -36,7 +36,7 @@ public class A1RepoImpl implements A1Repo {
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 A1User a1User = new A1User();
-                a1User.setId(result.getInt("userID"));
+                a1User.setId(result.getString("userID"));
                 a1User.setName(result.getString("name"));
                 a1User.setBirth(result.getDate("birth"));
                 a1User.setPhone(result.getString("phone"));
@@ -54,18 +54,18 @@ public class A1RepoImpl implements A1Repo {
     }
 
     @Override
-    public A1User getById(int id) {
+    public A1User getById(String id) {
         Connection conn = connection.getConnection();
         A1User a1User = null;
         try {
             String query = "select * from citizen_db.a1_user a1 inner join citizen_db.user u on a1.userID = u.userID " +
                     "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 a1User = new A1User();
-                a1User.setId(result.getInt("userID"));
+                a1User.setId(result.getString("userID"));
                 a1User.setName(result.getString("name"));
                 a1User.setBirth(result.getDate("birth"));
                 a1User.setPhone(result.getString("phone"));
@@ -85,10 +85,10 @@ public class A1RepoImpl implements A1Repo {
         Connection conn = connection.getConnection();
         try {
             userRepo.createUser(register);
-            int id = userRepo.getByAccount(accountRepo.getByEmail(register.getEmail()).getId()).getId();
+            String id = userRepo.getByAccount(accountRepo.getByEmail(register.getEmail()).getId()).getId();
             String query = "insert into citizen_db.a1_user values(?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.setString(2, register.getUserStatus());
             statement.setInt(3, register.getTotalProvinces());
             statement.execute();
@@ -110,7 +110,7 @@ public class A1RepoImpl implements A1Repo {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, a1User.getUserStatus());
             statement.setInt(2, a1User.getTotalProvinces());
-            statement.setInt(3, a1User.getId());
+            statement.setString(3, a1User.getId());
             statement.execute();
             User user = new User();
             user.setId(a1User.getId());
@@ -126,14 +126,14 @@ public class A1RepoImpl implements A1Repo {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         Connection conn = connection.getConnection();
 
         try {
             String query = "select * from citizen_db.a1_user a1 inner join citizen_db.user u on a1.userID = u.userID " +
                     "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet a1User = statement.executeQuery();
             accountRepo.deleteAccount(a1User.getInt("accountID"));
             conn.close();

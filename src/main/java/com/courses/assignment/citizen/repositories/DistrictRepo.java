@@ -7,9 +7,9 @@ import java.util.List;
 
 @Repository
 public interface DistrictRepo {
-    List<District> getAllInProvince(int provinceID);
-    District getById(int id);
+    List<District> getAllInProvince(String provinceID);
+    District getById(String id);
     void add(District district);
     void update(District district);
-    void delete(int id);
+    void delete(String id);
 }

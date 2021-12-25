@@ -35,14 +35,14 @@ public class B1RepoImpl implements B1Repo {
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 B1User b1User = new B1User();
-                b1User.setId(result.getInt("userID"));
+                b1User.setId(result.getString("userID"));
                 b1User.setName(result.getString("name"));
                 b1User.setBirth(result.getDate("birth"));
                 b1User.setPhone(result.getString("phone"));
                 b1User.setAccountID(result.getInt("accountID"));
                 b1User.setUserStatus(result.getString("user_status"));
-                b1User.setCommuneID(result.getInt("communeID"));
-                b1User.setA3Userid(result.getInt("a3_userID"));
+                b1User.setCommuneID(result.getString("communeID"));
+                b1User.setA3Userid(result.getString("a3_userID"));
 
                 b1Users.add(b1User);
             }
@@ -53,25 +53,25 @@ public class B1RepoImpl implements B1Repo {
     }
 
     @Override
-    public B1User getById(int id) {
+    public B1User getById(String id) {
         Connection conn = connection.getConnection();
         B1User b1User = null;
         try {
             String query = "select * from citizen_db.b1_user b1 inner join citizen_db.user u on u.userID = b1.userID " +
                     "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 b1User = new B1User();
-                b1User.setId(result.getInt("userID"));
+                b1User.setId(result.getString("userID"));
                 b1User.setName(result.getString("name"));
                 b1User.setBirth(result.getDate("birth"));
                 b1User.setPhone(result.getString("phone"));
                 b1User.setAccountID(result.getInt("accountID"));
                 b1User.setUserStatus(result.getString("user_status"));
-                b1User.setCommuneID(result.getInt("communeID"));
-                b1User.setA3Userid(result.getInt("a3_userID"));
+                b1User.setCommuneID(result.getString("communeID"));
+                b1User.setA3Userid(result.getString("a3_userID"));
 
             }
         } catch (Exception e) {
@@ -85,13 +85,13 @@ public class B1RepoImpl implements B1Repo {
         Connection conn = connection.getConnection();
         try {
             userRepo.createUser(register);
-            int id = userRepo.getByAccount(accountRepo.getByEmail(register.getEmail()).getId()).getId();
+            String id = userRepo.getByAccount(accountRepo.getByEmail(register.getEmail()).getId()).getId();
             String query = "insert into citizen_db.b1_user values(?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.setString(2, register.getUserStatus());
-            statement.setInt(3, register.getCommuneID());
-            statement.setInt(4, register.getSupervisorID());
+            statement.setString(3, register.getCommuneID());
+            statement.setString(4, register.getSupervisorID());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -110,9 +110,9 @@ public class B1RepoImpl implements B1Repo {
                     "where userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, b1User.getUserStatus());
-            statement.setInt(2, b1User.getCommuneID());
-            statement.setInt(3, b1User.getA3Userid());
-            statement.setInt(4, b1User.getId());
+            statement.setString(2, b1User.getCommuneID());
+            statement.setString(3, b1User.getA3Userid());
+            statement.setString(4, b1User.getId());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -121,13 +121,13 @@ public class B1RepoImpl implements B1Repo {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         Connection conn = connection.getConnection();
         try {
             String query = "select * from citizen_db.b1_user b1 inner join citizen_db.user u on u.userID = b1.userID " +
                     "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             accountRepo.deleteAccount(result.getInt("accountID"));
             conn.close();

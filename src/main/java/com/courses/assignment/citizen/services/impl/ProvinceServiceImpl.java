@@ -19,7 +19,7 @@ public class ProvinceServiceImpl implements ProvinceService {
     }
 
     @Override
-    public Province getById(int id) {
+    public Province getById(String id) {
         return provinceRepo.getById(id);
     }
 
@@ -34,7 +34,7 @@ public class ProvinceServiceImpl implements ProvinceService {
     }
 
     @Override
-    public void delete(int provinceID) {
+    public void delete(String provinceID) {
         provinceRepo.delete(provinceID);
     }
 }

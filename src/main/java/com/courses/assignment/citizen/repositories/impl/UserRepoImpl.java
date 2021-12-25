@@ -52,7 +52,7 @@ public class UserRepoImpl implements UserRepo {
             statement.setString(1, user.getName());
             statement.setDate(2, user.getBirth());
             statement.setString(3, user.getPhone());
-            statement.setInt(4, user.getId());
+            statement.setString(4, user.getId());
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class UserRepoImpl implements UserRepo {
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 user = new User();
-                user.setId(result.getInt("userID"));
+                user.setId(result.getString("userID"));
                 user.setName(result.getString("name"));
                 user.setBirth(result.getDate("birth"));
                 user.setPhone(result.getString("phone"));

@@ -18,7 +18,7 @@ public class B1Controller {
     }
 
     @GetMapping("/{id}") // localhost:8080/B1Users/{id}
-    public ResponseEntity<?> getById(@PathVariable int id) {
+    public ResponseEntity<?> getById(@PathVariable String id) {
         return ResponseEntity.ok(b1Service.getById(id));
     }
 
@@ -29,7 +29,7 @@ public class B1Controller {
     }
 
     @PostMapping("/deleteUser") // localhost:8080/B1Users/deleteUser?id={id}
-    public ResponseEntity<?> delete(@RequestParam int id) {
+    public ResponseEntity<?> delete(@RequestParam String id) {
         b1Service.deleteUser(id);
         return ResponseEntity.ok("Xóa người dùng thành công");
     }

@@ -14,12 +14,12 @@ public class DistrictServiceImpl implements DistrictService {
     private DistrictRepo districtRepo;
 
     @Override
-    public List<District> getAllInProvince(int provinceID) {
+    public List<District> getAllInProvince(String provinceID) {
         return districtRepo.getAllInProvince(provinceID);
     }
 
     @Override
-    public District getById(int id) {
+    public District getById(String id) {
         return districtRepo.getById(id);
     }
 
@@ -34,7 +34,7 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         districtRepo.delete(id);
     }
 }

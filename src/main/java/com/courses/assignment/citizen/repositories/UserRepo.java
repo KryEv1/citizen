@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepo {
-    public void createUser(UserRegister register);
-    public void update(User user);
-    public User getByAccount(int accountID);
+    void createUser(UserRegister register);
+    void update(User user);
+    User getByAccount(int accountID);
 }

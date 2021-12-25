@@ -15,7 +15,7 @@ public class Family {
     private String familyID;
     private String householderID;
     private Citizen householder;
-    private Integer address;
+    private String address;
     private String fullAddress;
     private List<Citizen> members;
 }

@@ -35,14 +35,14 @@ public class B2RepoImpl implements B2Repo {
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 B2User b2User = new B2User();
-                b2User.setId(result.getInt("userID"));
+                b2User.setId(result.getString("userID"));
                 b2User.setName(result.getString("name"));
                 b2User.setBirth(result.getDate("birth"));
                 b2User.setPhone(result.getString("phone"));
                 b2User.setAccountID(result.getInt("accountID"));
                 b2User.setUserStatus(result.getString("user_status"));
-                b2User.setHamletID(result.getInt("hamletID"));
-                b2User.setB1Userid(result.getInt("b1_userID"));
+                b2User.setHamletID(result.getString("hamletID"));
+                b2User.setB1Userid(result.getString("b1_userID"));
 
                 b2Users.add(b2User);
             }
@@ -54,25 +54,25 @@ public class B2RepoImpl implements B2Repo {
     }
 
     @Override
-    public B2User getById(int id) {
+    public B2User getById(String id) {
         Connection conn = connection.getConnection();
         B2User b2User = null;
         try {
             String query = "select * from citizen_db.b2_user b2 inner join citizen_db.user u on u.userID = b2.userID " +
                     "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 b2User = new B2User();
-                b2User.setId(result.getInt("userID"));
+                b2User.setId(result.getString("userID"));
                 b2User.setName(result.getString("name"));
                 b2User.setBirth(result.getDate("birth"));
                 b2User.setPhone(result.getString("phone"));
                 b2User.setAccountID(result.getInt("accountID"));
                 b2User.setUserStatus(result.getString("user_status"));
-                b2User.setHamletID(result.getInt("hamletID"));
-                b2User.setB1Userid(result.getInt("b1_userID"));
+                b2User.setHamletID(result.getString("hamletID"));
+                b2User.setB1Userid(result.getString("b1_userID"));
             }
             conn.close();
         } catch (Exception e) {
@@ -86,13 +86,13 @@ public class B2RepoImpl implements B2Repo {
         Connection conn = connection.getConnection();
         try {
             userRepo.createUser(register);
-            int id = userRepo.getByAccount(accountRepo.getByEmail(register.getEmail()).getId()).getId();
+            String id = userRepo.getByAccount(accountRepo.getByEmail(register.getEmail()).getId()).getId();
             String query = "insert into citizen_db.b2_user values(?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.setString(2, register.getUserStatus());
-            statement.setInt(3, register.getHamletID());
-            statement.setInt(4, register.getSupervisorID());
+            statement.setString(3, register.getHamletID());
+            statement.setString(4, register.getSupervisorID());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -111,9 +111,9 @@ public class B2RepoImpl implements B2Repo {
                     "where userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, b2User.getUserStatus());
-            statement.setInt(2, b2User.getHamletID());
-            statement.setInt(3, b2User.getB1Userid());
-            statement.setInt(4, b2User.getId());
+            statement.setString(2, b2User.getHamletID());
+            statement.setString(3, b2User.getB1Userid());
+            statement.setString(4, b2User.getId());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -122,13 +122,13 @@ public class B2RepoImpl implements B2Repo {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         Connection conn = connection.getConnection();
         try {
             String query = "select * from citizen_db.b2_user b2 inner join citizen_db.user u on u.userID = b2.userID " +
                     "where u.userID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             accountRepo.deleteAccount(result.getInt("accountID"));
             conn.close();

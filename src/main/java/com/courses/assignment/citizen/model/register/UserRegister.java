@@ -12,7 +12,7 @@ import java.sql.Date;
 @ToString
 @Component
 public class UserRegister {
-    private Integer id;
+    private String id;
     private String name;
     private Date birth;
     private String phone;
@@ -20,7 +20,7 @@ public class UserRegister {
     private String username;
     private String password;
     private String email;
-    private Integer supervisorID;
+    private String supervisorID;
     private String userStatus;
 
 }

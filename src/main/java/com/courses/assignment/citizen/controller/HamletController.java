@@ -13,22 +13,22 @@ public class HamletController {
     private HamletService hamletService;
 
     @GetMapping("/province") // localhost:8080/hamlets/province?provinceID={provinceID}
-    public ResponseEntity<?> getAllByProvince(@RequestParam int provinceID) {
+    public ResponseEntity<?> getAllByProvince(@RequestParam String provinceID) {
         return ResponseEntity.ok(hamletService.getAllInProvince(provinceID));
     }
 
     @GetMapping("/province/district") // localhost:8080/hamlets/province/district?districtID={districtID}
-    public ResponseEntity<?> getAllByDistrict(@RequestParam int districtID) {
+    public ResponseEntity<?> getAllByDistrict(@RequestParam String districtID) {
         return ResponseEntity.ok(hamletService.getAllInDistrict(districtID));
     }
 
     @GetMapping("/province/district/commune") // localhost:8080/hamlets/province/district/commune?communeID={communeID}
-    public ResponseEntity<?> getAllByCommune(@RequestParam int communeID) {
+    public ResponseEntity<?> getAllByCommune(@RequestParam String communeID) {
         return ResponseEntity.ok(hamletService.getAllInCommune(communeID));
     }
 
     @GetMapping("/{id}") // localhost:8080/hamlets/{id}
-    public ResponseEntity<?> getById(@PathVariable int id) {
+    public ResponseEntity<?> getById(@PathVariable String id) {
         return ResponseEntity.ok(hamletService.getByID(id));
     }
 
@@ -45,7 +45,7 @@ public class HamletController {
     }
 
     @PostMapping("/delete") // localhost:8080/hamlets/delete?id={id}
-    public ResponseEntity<?> delete(@RequestParam int id) {
+    public ResponseEntity<?> delete(@RequestParam String id) {
         hamletService.delete(id);
         return ResponseEntity.ok("Xóa thành công");
     }

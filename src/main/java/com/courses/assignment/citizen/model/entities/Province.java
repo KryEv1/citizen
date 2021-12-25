@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class Province {
-    private Integer id;
+    private String id;
     private String provinceName;
     private Integer population;
     private Integer totalDistricts;

@@ -19,7 +19,7 @@ public class ProvinceController {
     }
 
     @GetMapping("/{id}") // localhost:8080/provinces/{id}
-    public ResponseEntity<?> getProvinceById(@PathVariable int id) {
+    public ResponseEntity<?> getProvinceById(@PathVariable String id) {
         return ResponseEntity.ok(provinceService.getById(id));
     }
 
@@ -36,7 +36,7 @@ public class ProvinceController {
     }
 
     @PostMapping("/delete") // localhost:8080/provinces/delete?id={id}
-    public ResponseEntity<?> deleteProvince(@RequestParam int id) {
+    public ResponseEntity<?> deleteProvince(@RequestParam String id) {
         provinceService.delete(id);
         return ResponseEntity.ok("Xóa thành công");
     }

@@ -10,5 +10,5 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class A3Register extends UserRegister {
-    private int districtID;
+    private String districtID;
 }

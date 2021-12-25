@@ -14,17 +14,17 @@ public class CommuneServiceImpl implements CommuneService {
     private CommuneRepo communeRepo;
 
     @Override
-    public List<Commune> getAllInProvince(int provinceID) {
+    public List<Commune> getAllInProvince(String provinceID) {
         return communeRepo.getAllInProvince(provinceID);
     }
 
     @Override
-    public List<Commune> getAllInDistrict(int districtID) {
+    public List<Commune> getAllInDistrict(String districtID) {
         return communeRepo.getAllInDistrict(districtID);
     }
 
     @Override
-    public Commune getById(int id) {
+    public Commune getById(String id) {
         return communeRepo.getById(id);
     }
 
@@ -39,7 +39,7 @@ public class CommuneServiceImpl implements CommuneService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         communeRepo.delete(id);
     }
 }

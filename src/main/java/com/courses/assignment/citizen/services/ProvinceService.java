@@ -8,8 +8,8 @@ import java.util.List;
 @Service
 public interface ProvinceService {
     List<Province> getAll();
-    Province getById(int id);
+    Province getById(String id);
     void add(Province province);
     void update(Province province);
-    void delete(int provinceID);
+    void delete(String provinceID);
 }

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class District {
-    private Integer id;
+    private String id;
     private String districtName;
     private Integer population;
     private Integer totalCommunes;
-    private Integer provinceID;
+    private String provinceID;
 }

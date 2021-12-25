@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface CommuneRepo {
-    List<Commune> getAllInProvince(int provinceID);
-    List<Commune> getAllInDistrict(int districtID);
-    Commune getById(int id);
+    List<Commune> getAllInProvince(String provinceID);
+    List<Commune> getAllInDistrict(String districtID);
+    Commune getById(String id);
     void add(Commune commune);
     void update(Commune commune);
-    void delete(int id);
+    void delete(String id);
 }

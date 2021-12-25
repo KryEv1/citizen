@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface B2Repo {
     List<B2User> getAll();
-    B2User getById(int id);
+    B2User getById(String id);
     void createUser(B2Register register);
     void updateUser(B2User b2User);
-    void deleteUser(int id);
+    void deleteUser(String id);
 }

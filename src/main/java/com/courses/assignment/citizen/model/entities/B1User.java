@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class B1User extends User {
     private String userStatus;
-    private Integer communeID;
-    private Integer a3Userid;
+    private String communeID;
+    private String a3Userid;
 }

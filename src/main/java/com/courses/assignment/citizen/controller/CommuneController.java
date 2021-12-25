@@ -13,17 +13,17 @@ public class CommuneController {
     private CommuneService communeService;
 
     @GetMapping("/province") // locahost:8080/communes/province?provinceID={provinceID}
-    public ResponseEntity<?> getAllByProvince(@RequestParam int provinceID) {
+    public ResponseEntity<?> getAllByProvince(@RequestParam String provinceID) {
         return ResponseEntity.ok(communeService.getAllInProvince(provinceID));
     }
 
     @GetMapping("/province/district") // locahost:8080/communes/province/district?districtID={districtID}
-    public ResponseEntity<?> getAllByDistrict(@RequestParam int districtID) {
+    public ResponseEntity<?> getAllByDistrict(@RequestParam String districtID) {
         return ResponseEntity.ok(communeService.getAllInDistrict(districtID));
     }
 
     @GetMapping("/{id}") //  locahost:8080/communes/{id}
-    public ResponseEntity<?> getById(@PathVariable int id) {
+    public ResponseEntity<?> getById(@PathVariable String id) {
         return ResponseEntity.ok(communeService.getById(id));
     }
 
@@ -40,7 +40,7 @@ public class CommuneController {
     }
 
     @PostMapping("/delete") // localhost:8080/communes/delete?id={id}
-    public ResponseEntity<?> delete(@RequestParam int id) {
+    public ResponseEntity<?> delete(@RequestParam String id) {
         communeService.delete(id);
         return ResponseEntity.ok("Xóa thành công");
     }

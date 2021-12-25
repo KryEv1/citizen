@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface A3Repo {
     List<A3User> getAll();
-    A3User getById(int id);
+    A3User getById(String id);
     void createUser(A3Register register);
     void updateUser(A3User a3User);
-    void deleteUser(int id);
+    void deleteUser(String id);
 }

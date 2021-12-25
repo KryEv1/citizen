@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class Hamlet {
-    private Integer id;
+    private String id;
     private String hamletName;
     private Integer population;
-    private Integer communeID;
+    private String communeID;
 }

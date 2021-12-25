@@ -16,21 +16,21 @@ public class DistrictRepoImpl implements DistrictRepo {
     DbConnection connection = DbConnection.getInstance();
 
     @Override
-    public List<District> getAllInProvince(int provinceID) {
+    public List<District> getAllInProvince(String provinceID) {
         Connection conn = connection.getConnection();
         List<District> districts = new ArrayList<>();
         try {
             String query = "select * from citizen_db.district where provinceID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, provinceID);
+            statement.setString(1, provinceID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 District district = new District();
-                district.setId(result.getInt("districtID"));
+                district.setId(result.getString("districtID"));
                 district.setDistrictName(result.getString("district_name"));
                 district.setPopulation(result.getInt("population"));
                 district.setTotalCommunes(result.getInt("totalCommunes"));
-                district.setProvinceID(result.getInt("provinceID"));
+                district.setProvinceID(result.getString("provinceID"));
 
                 districts.add(district);
             }
@@ -42,21 +42,21 @@ public class DistrictRepoImpl implements DistrictRepo {
     }
 
     @Override
-    public District getById(int id) {
+    public District getById(String id) {
         Connection conn = connection.getConnection();
         District district = null;
         try {
             String query = "select * from citizen_db.district where districtID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 district = new District();
-                district.setId(result.getInt("districtID"));
+                district.setId(result.getString("districtID"));
                 district.setDistrictName(result.getString("district_name"));
                 district.setPopulation(result.getInt("population"));
                 district.setTotalCommunes(result.getInt("totalCommunes"));
-                district.setProvinceID(result.getInt("provinceID"));
+                district.setProvinceID(result.getString("provinceID"));
             }
             conn.close();
         } catch (Exception e) {
@@ -71,11 +71,11 @@ public class DistrictRepoImpl implements DistrictRepo {
         try {
             String query = "insert into citizen_db.district values(?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, district.getId());
+            statement.setString(1, district.getId());
             statement.setString(2, district.getDistrictName());
             statement.setInt(3, district.getPopulation());
             statement.setInt(4, district.getTotalCommunes());
-            statement.setInt(5, district.getProvinceID());
+            statement.setString(5, district.getProvinceID());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -97,8 +97,8 @@ public class DistrictRepoImpl implements DistrictRepo {
             statement.setString(1, district.getDistrictName());
             statement.setInt(2, district.getPopulation());
             statement.setInt(3, district.getTotalCommunes());
-            statement.setInt(4, district.getProvinceID());
-            statement.setInt(5, district.getId());
+            statement.setString(4, district.getProvinceID());
+            statement.setString(5, district.getId());
             statement.execute();
             conn.close();
         } catch (Exception e) {
@@ -107,12 +107,12 @@ public class DistrictRepoImpl implements DistrictRepo {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         Connection conn = connection.getConnection();
         try {
             String query = "delete from citizen_db.district where districtID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.execute();
             conn.close();
         } catch (Exception e) {

@@ -34,7 +34,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 family.setFamilyID(result.getString("familyID"));
                 family.setHouseholderID(result.getString("householderID"));
                 family.setHouseholder(this.getHouseholder(result.getString("familyID")));
-                family.setAddress(result.getInt("address"));
+                family.setAddress(result.getString("address"));
                 family.setFullAddress(this.getAddress(result.getString("familyID")));
                 family.setMembers(this.getAllMembers(result.getString("familyID")));
 
@@ -64,7 +64,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 family.setFamilyID(result.getString("familyID"));
                 family.setHouseholderID(result.getString("householderID"));
                 family.setHouseholder(this.getHouseholder(result.getString("familyID")));
-                family.setAddress(result.getInt("address"));
+                family.setAddress(result.getString("address"));
                 family.setFullAddress(this.getAddress(result.getString("familyID")));
                 family.setMembers(this.getAllMembers(result.getString("familyID")));
 
@@ -93,7 +93,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 family.setFamilyID(result.getString("familyID"));
                 family.setHouseholderID(result.getString("householderID"));
                 family.setHouseholder(this.getHouseholder(result.getString("familyID")));
-                family.setAddress(result.getInt("address"));
+                family.setAddress(result.getString("address"));
                 family.setFullAddress(this.getAddress(result.getString("familyID")));
                 family.setMembers(this.getAllMembers(result.getString("familyID")));
 
@@ -121,7 +121,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 family.setFamilyID(result.getString("familyID"));
                 family.setHouseholderID(result.getString("householderID"));
                 family.setHouseholder(this.getHouseholder(result.getString("familyID")));
-                family.setAddress(result.getInt("address"));
+                family.setAddress(result.getString("address"));
                 family.setFullAddress(this.getAddress(result.getString("familyID")));
                 family.setMembers(this.getAllMembers(result.getString("familyID")));
 
@@ -152,7 +152,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 citizen.setBirth(result.getDate("birth"));
                 citizen.setSex(result.getString("sex"));
                 citizen.setNationality(result.getString("nationality"));
-                citizen.setAddress(result.getInt("address"));
+                citizen.setAddress(result.getString("address"));
                 citizen.setFullAddress(this.getAddress(familyID));
                 citizen.setHouseholderID(result.getString("householderID"));
                 citizen.setHouseholder(this.getHouseholder(familyID));
@@ -186,7 +186,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 householder.setBirth(result.getDate("birth"));
                 householder.setSex(result.getString("sex"));
                 householder.setNationality(result.getString("nationality"));
-                householder.setAddress(result.getInt("address"));
+                householder.setAddress(result.getString("address"));
                 householder.setFullAddress(this.getAddress(familyID));
                 householder.setHouseholderID(result.getString("householderID"));
                 householder.setHouseholder(householder);
@@ -213,7 +213,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                 family.setFamilyID(result.getString("familyID"));
                 family.setHouseholderID(result.getString("householderID"));
                 family.setHouseholder(this.getHouseholder(result.getString("familyID")));
-                family.setAddress(result.getInt("address"));
+                family.setAddress(result.getString("address"));
                 family.setFullAddress(this.getAddress(result.getString("familyID")));
                 family.setMembers(this.getAllMembers(result.getString("familyID")));
             }

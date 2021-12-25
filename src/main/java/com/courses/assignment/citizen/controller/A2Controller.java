@@ -20,7 +20,7 @@ public class A2Controller {
     }
 
     @GetMapping("/{id}") // localhost:8080/A2Users/{id}
-    public ResponseEntity<?> getA2ByID(@PathVariable int id) {
+    public ResponseEntity<?> getA2ByID(@PathVariable String id) {
         return ResponseEntity.ok(a2Service.getById(id));
     }
 
@@ -31,7 +31,7 @@ public class A2Controller {
     }
 
     @PostMapping("/deleteUser") // localhost:8080/A2Users/deleteUser?id={id}
-    public ResponseEntity<?> deleteA2(@RequestParam int id) {
+    public ResponseEntity<?> deleteA2(@RequestParam String id) {
         a2Service.deleteUser(id);
         return ResponseEntity.ok("Xóa người dùng thành công");
     }

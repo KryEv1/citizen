@@ -26,7 +26,7 @@ public class A3ServiceImpl implements A3Service {
     }
 
     @Override
-    public A3UserDto getById(int id) {
+    public A3UserDto getById(String id) {
         return modelMapper.map(a3Repo.getById(id), A3UserDto.class);
     }
 
@@ -41,7 +41,7 @@ public class A3ServiceImpl implements A3Service {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(String id) {
         a3Repo.deleteUser(id);
     }
 }

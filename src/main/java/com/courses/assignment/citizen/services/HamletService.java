@@ -7,11 +7,11 @@ import java.util.List;
 
 @Service
 public interface HamletService {
-    List<Hamlet> getAllInProvince(int provinceID);
-    List<Hamlet> getAllInDistrict(int districtID);
-    List<Hamlet> getAllInCommune(int communeID);
-    Hamlet getByID(int id);
+    List<Hamlet> getAllInProvince(String provinceID);
+    List<Hamlet> getAllInDistrict(String districtID);
+    List<Hamlet> getAllInCommune(String communeID);
+    Hamlet getByID(String id);
     void add(Hamlet hamlet);
     void update(Hamlet hamlet);
-    void delete(int id);
+    void delete(String id);
 }

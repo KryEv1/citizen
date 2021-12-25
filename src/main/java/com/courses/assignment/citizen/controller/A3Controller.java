@@ -19,7 +19,7 @@ public class A3Controller {
     }
 
     @GetMapping("/{id}") // localhost:8080/A3Users/{id}
-    public ResponseEntity<?> getA3ByID(int id) {
+    public ResponseEntity<?> getA3ByID(@PathVariable String id) {
         return ResponseEntity.ok(a3Service.getById(id));
     }
 
@@ -30,7 +30,7 @@ public class A3Controller {
     }
 
     @PostMapping("/deleteUser") // localhost:8080/A3Users/deleteUser?id={id}
-    public ResponseEntity<?> deleteA3(@RequestParam int id) {
+    public ResponseEntity<?> deleteA3(@RequestParam String id) {
         a3Service.deleteUser(id);
         return ResponseEntity.ok("Xóa người dùng thành công");
     }
