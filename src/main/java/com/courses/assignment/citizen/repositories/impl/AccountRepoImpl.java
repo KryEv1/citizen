@@ -90,13 +90,13 @@ public class AccountRepoImpl implements AccountRepo {
     public void createAccount(UserRegister register) {
         Connection conn = connection.getConnection();
         try {
-            String query = "insert into citizen_db.account (username, password, email) values(?,?,?)";
+            String query = "insert into citizen_db.account values(?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, register.getUsername());
-            statement.setString(2, register.getPassword());
-            statement.setString(3, register.getEmail());
+            statement.setInt(1, register.getAccountID());
+            statement.setString(2, register.getUsername());
+            statement.setString(3, register.getPassword());
+            statement.setString(4, register.getEmail());
             statement.execute();
-            Account account = getByEmail(register.getEmail());
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();

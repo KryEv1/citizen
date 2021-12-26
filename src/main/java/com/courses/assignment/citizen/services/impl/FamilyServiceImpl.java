@@ -21,25 +21,25 @@ public class FamilyServiceImpl implements FamilyService {
     private FamilyRepo familyRepo;
 
     @Override
-    public List<FamilyDto> getAllByProvince(int provinceID) {
+    public List<FamilyDto> getAllByProvince(String provinceID) {
         return familyRepo.getAllByProvince(provinceID).stream()
                 .map(family -> modelMapper.map(family, FamilyDto.class)).collect(Collectors.toList());
     }
 
     @Override
-    public List<FamilyDto> getAllByDistrict(int districtID) {
+    public List<FamilyDto> getAllByDistrict(String districtID) {
         return familyRepo.getAllByDistrict(districtID).stream()
                 .map(family -> modelMapper.map(family, FamilyDto.class)).collect(Collectors.toList());
     }
 
     @Override
-    public List<FamilyDto> getAllByCommune(int communeID) {
+    public List<FamilyDto> getAllByCommune(String communeID) {
         return familyRepo.getAllByCommune(communeID).stream()
                 .map(family -> modelMapper.map(family, FamilyDto.class)).collect(Collectors.toList());
     }
 
     @Override
-    public List<FamilyDto> getAllByHamlet(int hamletID) {
+    public List<FamilyDto> getAllByHamlet(String hamletID) {
         return familyRepo.getAllByHamlet(hamletID).stream()
                 .map(family -> modelMapper.map(family, FamilyDto.class)).collect(Collectors.toList());
     }

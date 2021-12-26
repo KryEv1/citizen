@@ -25,13 +25,14 @@ public class UserRepoImpl implements UserRepo {
         try {
             accountRepo.createAccount(register);
             int accountID = accountRepo.getByEmail(register.getEmail()).getId();
-            String query = "insert into citizen_db.user (name, birth, phone, accountID) " +
-                    "values (?,?,?,?)";
+            String query = "insert into citizen_db.user " +
+                    "values (?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, register.getName());
-            statement.setDate(2, register.getBirth());
-            statement.setString(3, register.getPhone());
-            statement.setInt(4, accountID);
+            statement.setString(1, register.getId());
+            statement.setString(2, register.getName());
+            statement.setDate(3, register.getBirth());
+            statement.setString(4, register.getPhone());
+            statement.setInt(5, accountID);
             statement.execute();
             conn.close();
         } catch (Exception e) {

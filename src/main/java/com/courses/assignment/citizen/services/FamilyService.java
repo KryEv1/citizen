@@ -9,10 +9,10 @@ import java.util.List;
 
 @Service
 public interface FamilyService {
-    List<FamilyDto> getAllByProvince(int provinceID);
-    List<FamilyDto> getAllByDistrict(int districtID);
-    List<FamilyDto> getAllByCommune(int communeID);
-    List<FamilyDto> getAllByHamlet(int hamletID);
+    List<FamilyDto> getAllByProvince(String provinceID);
+    List<FamilyDto> getAllByDistrict(String districtID);
+    List<FamilyDto> getAllByCommune(String communeID);
+    List<FamilyDto> getAllByHamlet(String hamletID);
     List<Citizen> getAllMembers(String familyID);
     Citizen getHouseholder(String familyID);
     FamilyDto getByID(String id);

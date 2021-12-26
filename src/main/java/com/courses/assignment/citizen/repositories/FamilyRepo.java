@@ -8,10 +8,10 @@ import java.util.List;
 
 @Repository
 public interface FamilyRepo {
-    List<Family> getAllByProvince(int provinceID);
-    List<Family> getAllByDistrict(int districtID);
-    List<Family> getAllByCommune(int communeID);
-    List<Family> getAllByHamlet(int hamletID);
+    List<Family> getAllByProvince(String provinceID);
+    List<Family> getAllByDistrict(String districtID);
+    List<Family> getAllByCommune(String communeID);
+    List<Family> getAllByHamlet(String hamletID);
     List<Citizen> getAllMembers(String familyID);
     Citizen getHouseholder(String familyID);
     Family getByID(String id);

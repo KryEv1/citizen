@@ -24,7 +24,7 @@ public class A1Controller {
         return ResponseEntity.ok(a1Service.getById(id));
     }
 
-    @PostMapping("/register") // localhost:8080/A1User/register --- include json in body
+    @PostMapping("/register") // localhost:8080/A1Users/register --- include json in body
     public ResponseEntity<?> createUser(@RequestBody A1Register register) {
         a1Service.createUser(register);
         return ResponseEntity.ok("Tạo người dùng thành công");

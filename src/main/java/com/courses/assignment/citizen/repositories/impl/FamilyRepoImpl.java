@@ -17,7 +17,7 @@ public class FamilyRepoImpl implements FamilyRepo {
     DbConnection connection = DbConnection.getInstance();
 
     @Override
-    public List<Family> getAllByProvince(int provinceID) {
+    public List<Family> getAllByProvince(String provinceID) {
         Connection conn = connection.getConnection();
         List<Family> families = new ArrayList<>();
         try {
@@ -27,7 +27,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                     "inner join citizen_db.district d on c.districtID = d.districtID " +
                     "where d.provinceID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, provinceID);
+            statement.setString(1, provinceID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Family family = new Family();
@@ -48,7 +48,7 @@ public class FamilyRepoImpl implements FamilyRepo {
     }
 
     @Override
-    public List<Family> getAllByDistrict(int districtID) {
+    public List<Family> getAllByDistrict(String districtID) {
         Connection conn = connection.getConnection();
         List<Family> families = new ArrayList<>();
         try {
@@ -57,7 +57,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                     "inner join citizen_db.commune c on h.communeID = c.communeID " +
                     "where c.districtID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, districtID);
+            statement.setString(1, districtID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Family family = new Family();
@@ -78,7 +78,7 @@ public class FamilyRepoImpl implements FamilyRepo {
     }
 
     @Override
-    public List<Family> getAllByCommune(int communeID) {
+    public List<Family> getAllByCommune(String communeID) {
         Connection conn = connection.getConnection();
         List<Family> families = new ArrayList<>();
         try {
@@ -86,7 +86,7 @@ public class FamilyRepoImpl implements FamilyRepo {
                     "inner join citizen_db.hamlet h on f.address = h.hamletID " +
                     "where h.communeID = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, communeID);
+            statement.setString(1, communeID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Family family = new Family();
@@ -107,14 +107,14 @@ public class FamilyRepoImpl implements FamilyRepo {
     }
 
     @Override
-    public List<Family> getAllByHamlet(int hamletID) {
+    public List<Family> getAllByHamlet(String hamletID) {
         Connection conn = connection.getConnection();
         List<Family> families = new ArrayList<>();
         try {
             String query = "select * from citizen_db.family f " +
                     "where f.address = ?";
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, hamletID);
+            statement.setString(1, hamletID);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 Family family = new Family();
@@ -250,10 +250,12 @@ public class FamilyRepoImpl implements FamilyRepo {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, familyID);
             ResultSet result = statement.executeQuery();
-            address.append(", ").append(result.getString("hamlet_name"))
-                    .append(", ").append(result.getString("commune_name"))
-                    .append(", ").append(result.getString("district_name"))
-                    .append(", ").append(result.getString("province_name"));
+            if (result.next()) {
+                address.append(result.getString("hamlet_name"))
+                        .append(", ").append(result.getString("commune_name"))
+                        .append(", ").append(result.getString("district_name"))
+                        .append(", ").append(result.getString("province_name"));
+            }
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
